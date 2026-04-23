@@ -26,214 +26,222 @@ const observer = new IntersectionObserver(
 
 document.querySelectorAll(".reveal").forEach((el) => observer.observe(el));
 
-const products = [
+const cookieData = [
   {
-    title: "Orman Meyveli Cheesecake Cookie",
-    text: "Sisli orman esintisini taşıyan meyvemsi dokunuşlar ve cheesecake zarafeti.",
-    image: "linear-gradient(140deg, #3e5b48, #1c2f27)",
-    atmosphere: [
-      "rgba(53, 88, 69, 0.52)",
-      "rgba(31, 58, 48, 0.46)",
-      "rgba(32, 55, 43, 0.24)",
-      "rgba(8, 20, 15, 0.3)",
-      "rgba(134, 178, 150, 0.2)",
-      "rgba(13, 28, 21, 0.24)",
-    ],
+    name: "Antep Fıstığı Dolgulu Cookie",
+    line: "Kavrulmuş fıstık notalarıyla dengeli, yumuşak ve zengin bir lezzet.",
+    image: "assets/images/cookies/antep-fistikli.png",
+    alt: "Antep Fıstığı Dolgulu Cookie",
+    mood: {
+      a: "rgba(151, 175, 120, 0.25)",
+      b: "rgba(40, 73, 52, 0.15)",
+      glow: "rgba(188, 206, 150, 0.34)",
+      accent: "rgba(70, 98, 61, 0.9)",
+      accentSoft: "rgba(70, 98, 61, 0.34)",
+    },
   },
   {
-    title: "Lotus Biscoff Cookie",
-    text: "Karamel gün batımı sıcaklığında, tarçın notalarıyla sofistike bir denge.",
-    image: "linear-gradient(140deg, #c99356, #84502e)",
-    atmosphere: [
-      "rgba(199, 137, 72, 0.5)",
-      "rgba(146, 82, 41, 0.42)",
-      "rgba(192, 117, 57, 0.24)",
-      "rgba(64, 33, 17, 0.27)",
-      "rgba(255, 209, 154, 0.2)",
-      "rgba(115, 71, 34, 0.23)",
-    ],
+    name: "Yoğun Çikolatalı Brownie Cookie",
+    line: "Derin kakao karakteriyle yogun ve tatmin edici bir doku deneyimi.",
+    image: "assets/images/cookies/chocolate-brownie.png",
+    alt: "Yoğun Çikolatalı Brownie Cookie",
+    mood: {
+      a: "rgba(108, 68, 52, 0.26)",
+      b: "rgba(36, 20, 15, 0.16)",
+      glow: "rgba(139, 88, 65, 0.3)",
+      accent: "rgba(78, 45, 31, 0.9)",
+      accentSoft: "rgba(78, 45, 31, 0.34)",
+    },
   },
   {
-    title: "Nutella Dolgulu Cookie",
-    text: "Kadifemsi yansımalarla derin çikolata karakteri ve akışkan iç dolgu.",
-    image: "linear-gradient(140deg, #5d3a2e, #1f1412)",
-    atmosphere: [
-      "rgba(74, 44, 35, 0.55)",
-      "rgba(31, 17, 15, 0.48)",
-      "rgba(73, 39, 32, 0.26)",
-      "rgba(8, 6, 9, 0.3)",
-      "rgba(198, 149, 128, 0.16)",
-      "rgba(23, 13, 16, 0.22)",
-    ],
+    name: "Chocolate Chip Çubukları",
+    line: "Fırından yeni çıkmış sıcaklıkta, kıvamlı ve keyifli bir atıştırmalık.",
+    image: "assets/images/cookies/chocolate-chip-cubuk.png",
+    alt: "Chocolate Chip Çubukları",
+    mood: {
+      a: "rgba(202, 160, 104, 0.26)",
+      b: "rgba(104, 77, 43, 0.15)",
+      glow: "rgba(223, 184, 126, 0.32)",
+      accent: "rgba(140, 104, 52, 0.9)",
+      accentSoft: "rgba(140, 104, 52, 0.34)",
+    },
   },
   {
-    title: "Antep Fıstığı Dolgulu Cookie",
-    text: "Asil yeşil tonları ve altın dokunuşlu fıstık dolgusu ile rafine bir lezzet.",
-    image: "linear-gradient(140deg, #8fad5f, #4f6a31)",
-    atmosphere: [
-      "rgba(109, 151, 75, 0.5)",
-      "rgba(62, 92, 44, 0.42)",
-      "rgba(171, 150, 89, 0.22)",
-      "rgba(31, 52, 27, 0.28)",
-      "rgba(228, 207, 139, 0.22)",
-      "rgba(73, 83, 34, 0.2)",
-    ],
+    name: "Limon Kremalı Beyaz Çikolatalı Cookie",
+    line: "Ferah limon kreması ve beyaz çikolata dengesiyle zarif bir tat.",
+    image: "assets/images/cookies/limonlu-beyaz-cikolatali.png",
+    alt: "Limon Kremalı Beyaz Çikolatalı Cookie",
+    mood: {
+      a: "rgba(227, 220, 156, 0.28)",
+      b: "rgba(163, 183, 142, 0.13)",
+      glow: "rgba(245, 239, 181, 0.34)",
+      accent: "rgba(146, 156, 96, 0.9)",
+      accentSoft: "rgba(146, 156, 96, 0.34)",
+    },
   },
   {
-    title: "Tiramisu Cookie",
-    text: "İtalyan gece kafe atmosferinden ilham alan espresso ve krema uyumu.",
-    image: "linear-gradient(140deg, #8a5d44, #2e2321)",
-    atmosphere: [
-      "rgba(120, 77, 55, 0.48)",
-      "rgba(45, 34, 31, 0.43)",
-      "rgba(90, 58, 47, 0.24)",
-      "rgba(12, 14, 18, 0.28)",
-      "rgba(205, 172, 145, 0.16)",
-      "rgba(26, 21, 26, 0.22)",
-    ],
+    name: "Lotus Biscoff Dolgulu Cookie",
+    line: "Karamel-bisküvi sıcaklığı taşıyan dolgun ve yumuşak bir imza lezzet.",
+    image: "assets/images/cookies/lotus.png",
+    alt: "Lotus Biscoff Dolgulu Cookie",
+    mood: {
+      a: "rgba(204, 144, 92, 0.27)",
+      b: "rgba(107, 67, 35, 0.15)",
+      glow: "rgba(226, 170, 116, 0.34)",
+      accent: "rgba(135, 84, 48, 0.9)",
+      accentSoft: "rgba(135, 84, 48, 0.34)",
+    },
   },
   {
-    title: "Yoğun Çikolatalı Brownie Cookie",
-    text: "Yoğun kakao ruhu ve lav dokulu derinlik ile etkileyici bir tat deneyimi.",
-    image: "linear-gradient(140deg, #5a3023, #1f1411)",
-    atmosphere: [
-      "rgba(96, 46, 30, 0.52)",
-      "rgba(32, 17, 14, 0.46)",
-      "rgba(87, 39, 25, 0.24)",
-      "rgba(13, 8, 8, 0.31)",
-      "rgba(186, 109, 78, 0.16)",
-      "rgba(24, 14, 14, 0.22)",
-    ],
+    name: "Nutella Dolgulu Cookie",
+    line: "Akışkan iç dolgusu ve yoğun çikolata notalarıyla unutulmaz bir seçim.",
+    image: "assets/images/cookies/nutella.png",
+    alt: "Nutella Dolgulu Cookie",
+    mood: {
+      a: "rgba(119, 79, 62, 0.26)",
+      b: "rgba(42, 24, 18, 0.15)",
+      glow: "rgba(150, 96, 74, 0.3)",
+      accent: "rgba(88, 53, 40, 0.9)",
+      accentSoft: "rgba(88, 53, 40, 0.34)",
+    },
   },
   {
-    title: "Limon Kremalı Beyaz Çikolatalı Cookie",
-    text: "Limon gün doğumu ferahlığı ve beyaz çikolatanın kremsi zarafeti.",
-    image: "linear-gradient(140deg, #e2d27d, #b6c79f)",
-    atmosphere: [
-      "rgba(224, 206, 122, 0.45)",
-      "rgba(184, 204, 174, 0.36)",
-      "rgba(243, 236, 182, 0.25)",
-      "rgba(115, 131, 119, 0.21)",
-      "rgba(255, 250, 214, 0.25)",
-      "rgba(171, 191, 178, 0.2)",
-    ],
+    name: "Orman Meyveli Cheesecake Cookie",
+    line: "Meyvemsi dokunuşlar ve cheesecake esintisiyle ferah bir yorum.",
+    image: "assets/images/cookies/orman-meyveli.png",
+    alt: "Orman Meyveli Cheesecake Cookie",
+    mood: {
+      a: "rgba(166, 123, 145, 0.24)",
+      b: "rgba(72, 47, 74, 0.13)",
+      glow: "rgba(190, 143, 169, 0.3)",
+      accent: "rgba(112, 72, 116, 0.9)",
+      accentSoft: "rgba(112, 72, 116, 0.34)",
+    },
   },
   {
-    title: "Karamelli Yer Fıstıklı Cookie",
-    text: "Kavrulmuş altın tonlarda sıcak ve dolgun karamel-fıstık harmonisi.",
-    image: "linear-gradient(140deg, #ca8f53, #7a5633)",
-    atmosphere: [
-      "rgba(206, 145, 84, 0.47)",
-      "rgba(122, 85, 49, 0.41)",
-      "rgba(183, 121, 62, 0.23)",
-      "rgba(63, 41, 22, 0.26)",
-      "rgba(242, 198, 147, 0.2)",
-      "rgba(110, 78, 42, 0.2)",
-    ],
+    name: "Tiramisu Cookie",
+    line: "Kahve ve krema notalarının dengeli buluşmasıyla rafine bir tat.",
+    image: "assets/images/cookies/tiramisu.png",
+    alt: "Tiramisu Cookie",
+    mood: {
+      a: "rgba(148, 110, 89, 0.25)",
+      b: "rgba(71, 50, 40, 0.14)",
+      glow: "rgba(173, 134, 112, 0.3)",
+      accent: "rgba(95, 67, 53, 0.9)",
+      accentSoft: "rgba(95, 67, 53, 0.34)",
+    },
   },
   {
-    title: "Chocolate Chip Çubukları",
-    text: "Fırından yeni çıkmış artisan atölye sıcaklığında kıtır bir final dokunuşu.",
-    image: "linear-gradient(140deg, #b18052, #6a442b)",
-    atmosphere: [
-      "rgba(182, 128, 80, 0.45)",
-      "rgba(114, 71, 42, 0.38)",
-      "rgba(160, 102, 64, 0.22)",
-      "rgba(55, 33, 20, 0.24)",
-      "rgba(236, 194, 149, 0.17)",
-      "rgba(92, 61, 37, 0.21)",
-    ],
+    name: "Karamelli Yer Fıstıklı Cookie",
+    line: "Karamel ve yer fıstığı uyumunu bir araya getiren sıcak bir lezzet.",
+    image: "assets/images/cookies/yer-fistikli.png",
+    alt: "Karamelli Yer Fıstıklı Cookie",
+    mood: {
+      a: "rgba(201, 145, 88, 0.27)",
+      b: "rgba(111, 78, 44, 0.14)",
+      glow: "rgba(225, 174, 118, 0.3)",
+      accent: "rgba(146, 101, 56, 0.9)",
+      accentSoft: "rgba(146, 101, 56, 0.34)",
+    },
   },
 ];
 
-const flavorShowcase = document.getElementById("flavorShowcase");
-const flavorStage = document.getElementById("flavorStage");
-const flavorPlatform = document.getElementById("flavorPlatform");
-const flavorImage = document.getElementById("flavorImage");
-const flavorTitle = document.getElementById("flavorTitle");
-const flavorText = document.getElementById("flavorText");
-const flavorDots = document.getElementById("flavorDots");
-const flavorPrev = document.getElementById("flavorPrev");
-const flavorNext = document.getElementById("flavorNext");
 const cookiesSection = document.getElementById("cookies");
+const cookieStage = document.querySelector(".cookie-stage");
+const cookieImage = document.getElementById("cookieShowcaseImage");
+const cookieTitle = document.getElementById("cookieShowcaseTitle");
+const cookieLine = document.getElementById("cookieShowcaseLine");
+const cookiePrev = document.getElementById("cookiePrev");
+const cookieNext = document.getElementById("cookieNext");
+const cookieSelectors = document.getElementById("cookieSelectors");
+const defaultCookieMood = {
+  a: "rgba(213, 191, 166, 0.22)",
+  b: "rgba(15, 35, 69, 0.1)",
+  glow: "rgba(213, 191, 166, 0.34)",
+  accent: "rgba(15, 35, 69, 0.9)",
+  accentSoft: "rgba(15, 35, 69, 0.28)",
+};
 
-let currentProductIndex = 0;
-let platformRotation = 0;
-let cookieRotation = 0;
-let isAnimatingFlavor = false;
+let cookieIndex = 0;
+let animating = false;
 let touchStartX = 0;
+let cookiesInView = false;
 
-function setAtmosphere(product) {
-  const [a, b, c, d, e, f] = product.atmosphere;
-  document.body.style.setProperty("--atmo-a", a);
-  document.body.style.setProperty("--atmo-b", b);
-  document.body.style.setProperty("--atmo-c", c);
-  document.body.style.setProperty("--atmo-d", d);
-  document.body.style.setProperty("--atmo-e", e);
-  document.body.style.setProperty("--atmo-f", f);
+function applyMood(product) {
+  if (!cookiesSection) return;
+  cookiesSection.style.setProperty("--cookie-a", product.mood.a);
+  cookiesSection.style.setProperty("--cookie-b", product.mood.b);
+  cookiesSection.style.setProperty("--cookie-glow", product.mood.glow);
+  cookiesSection.style.setProperty("--cookie-accent", product.mood.accent);
+  cookiesSection.style.setProperty("--cookie-accent-soft", product.mood.accentSoft);
+  cookiesSection.classList.add("is-mood-active");
 }
 
-function resetAtmosphere() {
-  document.body.classList.remove("atmosphere-active");
+function resetMood() {
+  if (!cookiesSection) return;
+  cookiesSection.style.setProperty("--cookie-a", defaultCookieMood.a);
+  cookiesSection.style.setProperty("--cookie-b", defaultCookieMood.b);
+  cookiesSection.style.setProperty("--cookie-glow", defaultCookieMood.glow);
+  cookiesSection.style.setProperty("--cookie-accent", defaultCookieMood.accent);
+  cookiesSection.style.setProperty("--cookie-accent-soft", defaultCookieMood.accentSoft);
+  cookiesSection.classList.remove("is-mood-active");
 }
 
-function renderProduct(index, direction = 1) {
-  if (isAnimatingFlavor) return;
-  isAnimatingFlavor = true;
-  currentProductIndex = (index + products.length) % products.length;
-  const selected = products[currentProductIndex];
-  const outClass = direction >= 0 ? "is-transitioning-next" : "is-transitioning-prev";
+function renderCookie(index, direction = 1) {
+  if (animating) return;
+  animating = true;
 
-  flavorStage.classList.remove("is-transitioning-next", "is-transitioning-prev", "is-entering");
-  flavorStage.classList.add(outClass);
+  cookieIndex = (index + cookieData.length) % cookieData.length;
+  const selected = cookieData[cookieIndex];
+  const leavingClass = direction >= 0 ? "is-leaving-next" : "is-leaving-prev";
+  cookieStage.classList.remove("is-leaving-next", "is-leaving-prev");
+  cookieStage.classList.add(leavingClass);
 
   setTimeout(() => {
-    flavorTitle.textContent = selected.title;
-    flavorText.textContent = selected.text;
-    flavorImage.style.background = `
-      radial-gradient(circle at 50% 30%, rgba(255, 255, 255, 0.44), transparent 58%),
-      ${selected.image}
-    `;
+    cookieTitle.textContent = selected.name;
+    cookieLine.textContent = selected.line;
+    cookieImage.src = selected.image;
+    cookieImage.alt = selected.alt;
+    if (cookiesInView) applyMood(selected);
 
-    platformRotation += direction * 14;
-    cookieRotation += direction * 7;
-    flavorPlatform.style.setProperty("--platform-rotation", `${platformRotation}deg`);
-    flavorImage.style.setProperty("--cookie-rotation", `${cookieRotation}deg`);
+    cookieImage.style.setProperty("--cookie-rot", "0deg");
 
-    const dotItems = flavorDots.querySelectorAll(".flavor-dot");
-    dotItems.forEach((dot, dotIndex) => {
-      dot.classList.toggle("is-active", dotIndex === currentProductIndex);
+    cookieSelectors.querySelectorAll(".cookie-dot").forEach((dot, idx) => {
+      dot.classList.toggle("is-active", idx === cookieIndex);
     });
 
-    if (document.body.classList.contains("atmosphere-active")) {
-      setAtmosphere(selected);
-    }
-
-    flavorStage.classList.remove(outClass);
-    flavorStage.classList.add("is-entering");
-  }, 280);
+    cookieStage.classList.remove(leavingClass);
+  }, 240);
 
   setTimeout(() => {
-    flavorStage.classList.remove("is-entering");
-    isAnimatingFlavor = false;
-  }, 980);
+    animating = false;
+  }, 760);
 }
 
-if (flavorShowcase) {
-  products.forEach((product, index) => {
-    const dotButton = document.createElement("button");
-    dotButton.type = "button";
-    dotButton.className = "flavor-dot";
-    dotButton.textContent = product.title;
-    dotButton.setAttribute("aria-label", `${product.title} ürününü seç`);
-    dotButton.addEventListener("click", () => renderProduct(index, index >= currentProductIndex ? 1 : -1));
-    flavorDots.appendChild(dotButton);
+if (
+  cookiesSection &&
+  cookieStage &&
+  cookieImage &&
+  cookieTitle &&
+  cookieLine &&
+  cookiePrev &&
+  cookieNext &&
+  cookieSelectors
+) {
+  cookieData.forEach((item, idx) => {
+    const button = document.createElement("button");
+    button.type = "button";
+    button.className = "cookie-dot";
+    button.textContent = item.name;
+    button.setAttribute("aria-label", `${item.name} seç`);
+    button.addEventListener("click", () => renderCookie(idx, idx >= cookieIndex ? 1 : -1));
+    cookieSelectors.appendChild(button);
   });
 
-  flavorPrev.addEventListener("click", () => renderProduct(currentProductIndex - 1, -1));
-  flavorNext.addEventListener("click", () => renderProduct(currentProductIndex + 1, 1));
+  cookiePrev.addEventListener("click", () => renderCookie(cookieIndex - 1, -1));
+  cookieNext.addEventListener("click", () => renderCookie(cookieIndex + 1, 1));
 
-  flavorShowcase.addEventListener(
+  cookiesSection.addEventListener(
     "touchstart",
     (event) => {
       touchStartX = event.changedTouches[0].clientX;
@@ -241,35 +249,31 @@ if (flavorShowcase) {
     { passive: true }
   );
 
-  flavorShowcase.addEventListener(
+  cookiesSection.addEventListener(
     "touchend",
     (event) => {
-      const deltaX = event.changedTouches[0].clientX - touchStartX;
-      if (Math.abs(deltaX) < 32) return;
-      if (deltaX < 0) {
-        renderProduct(currentProductIndex + 1, 1);
-      } else {
-        renderProduct(currentProductIndex - 1, -1);
-      }
+      const dx = event.changedTouches[0].clientX - touchStartX;
+      if (Math.abs(dx) < 30) return;
+      if (dx < 0) renderCookie(cookieIndex + 1, 1);
+      else renderCookie(cookieIndex - 1, -1);
     },
     { passive: true }
   );
 
-  const atmosphereObserver = new IntersectionObserver(
+  const cookiesMoodObserver = new IntersectionObserver(
     (entries) => {
       entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          document.body.classList.add("atmosphere-active");
-          setAtmosphere(products[currentProductIndex]);
-        } else {
-          resetAtmosphere();
-        }
+        cookiesInView = entry.isIntersecting;
+        if (cookiesInView) applyMood(cookieData[cookieIndex]);
+        else resetMood();
       });
     },
-    { threshold: 0.32 }
+    { threshold: 0.35 }
   );
 
-  atmosphereObserver.observe(cookiesSection);
-  renderProduct(0, 1);
-  isAnimatingFlavor = false;
+  cookiesMoodObserver.observe(cookiesSection);
+
+  renderCookie(0, 1);
+  resetMood();
+  animating = false;
 }
