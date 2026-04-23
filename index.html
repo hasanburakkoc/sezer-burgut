@@ -3,19 +3,789 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Merhaba</title>
+    <title>MANTEQUILLA | Premium Cookie ve Tatlı Deneyimi</title>
+    <meta
+      name="description"
+      content="MANTEQUILLA, günlük üretim premium cookie, pasta, tatlı ve tuzlu çeşitleriyle butik lezzet deneyimi sunar."
+    />
+    <meta
+      name="keywords"
+      content="MANTEQUILLA, premium cookie, butik pastane, özel sipariş, günlük taze tatlı"
+    />
+    <meta name="theme-color" content="#0F2345" />
+    <link rel="canonical" href="https://mantequilla.example/" />
+    <meta property="og:title" content="MANTEQUILLA | Premium Cookie ve Tatlı Deneyimi" />
+    <meta
+      property="og:description"
+      content="El yapımı premium cookie ve tatlılar, özel günler için butik sipariş seçenekleri."
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://mantequilla.example/" />
+    <meta property="og:image" content="https://mantequilla.example/og-cover.jpg" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=Manrope:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
     <style>
+      :root {
+        --navy: #0f2345;
+        --navy-soft: #1b3461;
+        --cream: #f6f0e8;
+        --beige: #d5bfa6;
+        --beige-soft: #e8d9c9;
+        --ink: #132033;
+        --white: #ffffff;
+        --radius: 18px;
+        --shadow: 0 16px 40px rgba(15, 35, 69, 0.13);
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
       body {
         margin: 0;
-        min-height: 100vh;
+        font-family: "Manrope", system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+        color: var(--ink);
+        background: var(--cream);
+        line-height: 1.6;
+      }
+
+      img {
+        max-width: 100%;
+        display: block;
+      }
+
+      .container {
+        width: min(1120px, 92%);
+        margin-inline: auto;
+      }
+
+      .section {
+        padding: 4.5rem 0;
+      }
+
+      .section-title {
+        margin: 0 0 0.75rem;
+        font: 600 clamp(1.9rem, 5vw, 2.8rem) / 1.15 "Playfair Display", serif;
+        letter-spacing: 0.02em;
+        color: var(--navy);
+      }
+
+      .section-subtitle {
+        margin: 0 0 2rem;
+        max-width: 62ch;
+        color: rgba(19, 32, 51, 0.8);
+      }
+
+      .reveal {
+        opacity: 0;
+        transform: translateY(18px);
+        transition: opacity 0.8s ease, transform 0.8s ease;
+      }
+
+      .reveal.is-visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      .navbar {
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+        backdrop-filter: blur(8px);
+        background: rgba(246, 240, 232, 0.92);
+        border-bottom: 1px solid rgba(15, 35, 69, 0.08);
+      }
+
+      .nav-inner {
+        min-height: 72px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 1rem;
+      }
+
+      .brand {
+        text-decoration: none;
+        color: var(--navy);
+        font: 700 1.25rem/1 "Playfair Display", serif;
+        letter-spacing: 0.08em;
+      }
+
+      .menu-toggle {
+        width: 44px;
+        height: 44px;
+        border-radius: 12px;
+        border: 1px solid rgba(15, 35, 69, 0.18);
+        background: transparent;
+        color: var(--navy);
         display: grid;
         place-items: center;
-        background: #f2f2f2;
-        font-family: Arial, sans-serif;
+        font-size: 1.2rem;
+      }
+
+      .nav-links {
+        display: none;
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: 72px;
+        background: var(--cream);
+        border-bottom: 1px solid rgba(15, 35, 69, 0.08);
+        padding: 1rem 4%;
+      }
+
+      .nav-links.open {
+        display: grid;
+        gap: 0.8rem;
+      }
+
+      .nav-links a {
+        text-decoration: none;
+        color: var(--navy);
+        font-weight: 600;
+      }
+
+      .btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0.5rem;
+        border: none;
+        border-radius: 999px;
+        padding: 0.9rem 1.4rem;
+        text-decoration: none;
+        font-weight: 700;
+        transition: transform 0.25s ease, box-shadow 0.25s ease, background 0.25s ease;
+      }
+
+      .btn:hover {
+        transform: translateY(-2px);
+      }
+
+      .btn-primary {
+        background: var(--navy);
+        color: var(--white);
+        box-shadow: 0 12px 24px rgba(15, 35, 69, 0.24);
+      }
+
+      .btn-secondary {
+        background: transparent;
+        color: var(--navy);
+        border: 1px solid rgba(15, 35, 69, 0.3);
+      }
+
+      .hero {
+        padding: 5.5rem 0 4.5rem;
+      }
+
+      .hero-grid {
+        display: grid;
+        gap: 2.2rem;
+        align-items: center;
+      }
+
+      .eyebrow {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.45rem;
+        background: rgba(213, 191, 166, 0.35);
+        color: var(--navy);
+        border-radius: 999px;
+        padding: 0.35rem 0.75rem;
+        font-weight: 700;
+        font-size: 0.8rem;
+        letter-spacing: 0.04em;
+        margin-bottom: 1rem;
+      }
+
+      .hero h1 {
+        margin: 0 0 1rem;
+        font: 700 clamp(2.15rem, 7.5vw, 4.35rem) / 1.06 "Playfair Display", serif;
+        color: var(--navy);
+      }
+
+      .hero p {
+        margin: 0 0 1.8rem;
+        color: rgba(19, 32, 51, 0.83);
+      }
+
+      .hero-actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.75rem;
+      }
+
+      .cookie-visuals {
+        position: relative;
+        min-height: 380px;
+        isolation: isolate;
+      }
+
+      .cookie {
+        position: absolute;
+        border-radius: 50%;
+        background: radial-gradient(circle at 30% 28%, #f8e1bf 4%, #cf9e63 55%, #955c2f 100%);
+        box-shadow: inset -10px -14px 26px rgba(84, 39, 7, 0.24), 0 18px 32px rgba(15, 35, 69, 0.2);
+      }
+
+      .cookie::before {
+        content: "";
+        position: absolute;
+        width: 14%;
+        height: 14%;
+        background: #5f3618;
+        border-radius: 50%;
+        top: 20%;
+        left: 30%;
+        box-shadow: 18px 22px 0 #5f3618, 44px 8px 0 #5f3618, 58px 38px 0 #5f3618, 12px 54px 0 #5f3618;
+        opacity: 0.92;
+      }
+
+      .cookie.one {
+        width: 220px;
+        height: 220px;
+        right: 8%;
+        top: 12%;
+        animation: float 6.5s ease-in-out infinite;
+      }
+
+      .cookie.two {
+        width: 155px;
+        height: 155px;
+        left: 6%;
+        bottom: 3%;
+        animation: float 5.5s ease-in-out infinite reverse;
+      }
+
+      .cookie.three {
+        width: 120px;
+        height: 120px;
+        right: 45%;
+        bottom: 18%;
+        animation: float 4.8s ease-in-out infinite;
+      }
+
+      .cookie-bg-shape {
+        position: absolute;
+        inset: auto auto 12% 5%;
+        width: 88%;
+        height: 72%;
+        border-radius: 30% 70% 38% 62% / 42% 33% 67% 58%;
+        background: linear-gradient(140deg, rgba(15, 35, 69, 0.12), rgba(213, 191, 166, 0.26));
+        z-index: -1;
+      }
+
+      .about-card {
+        background: var(--white);
+        border-radius: var(--radius);
+        box-shadow: var(--shadow);
+        padding: 1.6rem;
+      }
+
+      .story-points {
+        display: grid;
+        gap: 1rem;
+        margin-top: 1.2rem;
+      }
+
+      .story-point {
+        padding: 1rem;
+        border: 1px solid rgba(15, 35, 69, 0.08);
+        border-radius: 14px;
+        background: linear-gradient(120deg, rgba(246, 240, 232, 0.75), rgba(232, 217, 201, 0.38));
+      }
+
+      .products-grid {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 1rem;
+      }
+
+      .product-card {
+        background: var(--white);
+        border-radius: 16px;
+        overflow: hidden;
+        border: 1px solid rgba(15, 35, 69, 0.08);
+        transition: transform 0.25s ease, box-shadow 0.25s ease;
+      }
+
+      .product-card:hover {
+        transform: translateY(-4px);
+        box-shadow: var(--shadow);
+      }
+
+      .product-visual {
+        aspect-ratio: 4/3;
+        background-size: cover;
+        background-position: center;
+      }
+
+      .product-info {
+        padding: 1rem;
+      }
+
+      .product-info h3 {
+        margin: 0 0 0.4rem;
+        font: 600 1.1rem/1.25 "Playfair Display", serif;
+        color: var(--navy);
+      }
+
+      .catalog-wrap {
+        display: grid;
+        gap: 1rem;
+      }
+
+      .catalog-card {
+        background: linear-gradient(140deg, rgba(15, 35, 69, 0.95), rgba(27, 52, 97, 0.9));
+        color: var(--cream);
+        border-radius: 16px;
+        padding: 1.35rem;
+      }
+
+      .catalog-card h3 {
+        margin: 0 0 0.75rem;
+        font-family: "Playfair Display", serif;
+      }
+
+      .catalog-card ul {
+        margin: 0;
+        padding-left: 1rem;
+      }
+
+      .event {
+        background: var(--navy);
+        color: var(--cream);
+      }
+
+      .event .section-title,
+      .event .section-subtitle {
+        color: var(--cream);
+      }
+
+      .event-grid {
+        display: grid;
+        gap: 1rem;
+      }
+
+      .event-box {
+        border: 1px solid rgba(246, 240, 232, 0.28);
+        border-radius: 16px;
+        padding: 1.15rem;
+        background: rgba(255, 255, 255, 0.04);
+      }
+
+      .insta-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 0.8rem;
+      }
+
+      .insta-item {
+        border-radius: 14px;
+        min-height: 132px;
+        background-size: cover;
+        background-position: center;
+        border: 1px solid rgba(15, 35, 69, 0.08);
+      }
+
+      .contact-grid {
+        display: grid;
+        gap: 1.2rem;
+      }
+
+      .contact-card {
+        background: var(--white);
+        border-radius: 16px;
+        padding: 1.2rem;
+        border: 1px solid rgba(15, 35, 69, 0.08);
+      }
+
+      .map {
+        width: 100%;
+        height: 260px;
+        border: 0;
+        border-radius: 14px;
+      }
+
+      .footer {
+        background: #0b1c37;
+        color: rgba(246, 240, 232, 0.9);
+        padding: 2rem 0;
+      }
+
+      .footer-inner {
+        display: flex;
+        flex-direction: column;
+        gap: 0.9rem;
+      }
+
+      .wa-fab {
+        position: fixed;
+        right: 1rem;
+        bottom: 1rem;
+        width: 58px;
+        height: 58px;
+        border-radius: 50%;
+        display: grid;
+        place-items: center;
+        text-decoration: none;
+        background: #25d366;
+        color: white;
+        font-size: 1.55rem;
+        box-shadow: 0 12px 24px rgba(6, 58, 28, 0.33);
+        z-index: 1100;
+      }
+
+      @keyframes float {
+        0%,
+        100% {
+          transform: translateY(0px);
+        }
+        50% {
+          transform: translateY(-10px);
+        }
+      }
+
+      @media (min-width: 720px) {
+        .menu-toggle {
+          display: none;
+        }
+
+        .nav-links {
+          display: flex;
+          position: static;
+          background: transparent;
+          border: 0;
+          padding: 0;
+          gap: 1.2rem;
+        }
+
+        .hero-grid,
+        .about-grid,
+        .contact-grid {
+          grid-template-columns: 1fr 1fr;
+        }
+
+        .products-grid {
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+
+        .catalog-wrap,
+        .event-grid {
+          grid-template-columns: repeat(3, minmax(0, 1fr));
+        }
+
+        .insta-grid {
+          grid-template-columns: repeat(4, 1fr);
+        }
+
+        .footer-inner {
+          align-items: center;
+          flex-direction: row;
+          justify-content: space-between;
+        }
+      }
+
+      @media (min-width: 1024px) {
+        .hero {
+          padding-top: 6.5rem;
+        }
+
+        .products-grid {
+          grid-template-columns: repeat(3, minmax(0, 1fr));
+        }
       }
     </style>
   </head>
   <body>
-    merhaba.
+    <header class="navbar">
+      <div class="container nav-inner">
+        <a class="brand" href="#home" aria-label="MANTEQUILLA ana sayfa">MANTEQUILLA</a>
+        <button class="menu-toggle" aria-label="Menüyü aç veya kapat" id="menuToggle">☰</button>
+        <nav class="nav-links" id="navLinks">
+          <a href="#home">Ana Sayfa</a>
+          <a href="#about">Hakkımızda</a>
+          <a href="#cookies">Ürünler</a>
+          <a href="#events">Özel Siparişler</a>
+          <a href="#contact">İletişim</a>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <section class="hero" id="home">
+        <div class="container hero-grid">
+          <div class="reveal">
+            <span class="eyebrow">MANTEQUILLA Cookies & Bakery</span>
+            <h1>El Yapımı Premium Cookie Deneyimi</h1>
+            <p>
+              Günlük Üretim, Gerçek Tereyağı, Unutulmaz Lezzet. MANTEQUILLA, özenle hazırlanan
+              butik reçeteleriyle her lokmada zarif ve dengeli bir tat sunar.
+            </p>
+            <div class="hero-actions">
+              <a class="btn btn-primary" href="#contact">Sipariş Ver</a>
+              <a class="btn btn-secondary" href="#cookies">Ürünleri İncele</a>
+              <a class="btn btn-secondary" href="#events">Bize Ulaş</a>
+            </div>
+          </div>
+          <div class="cookie-visuals reveal" aria-hidden="true">
+            <div class="cookie-bg-shape"></div>
+            <div class="cookie one"></div>
+            <div class="cookie two"></div>
+            <div class="cookie three"></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="about">
+        <div class="container about-grid">
+          <div class="about-card reveal">
+            <h2 class="section-title">Hakkımızda</h2>
+            <p class="section-subtitle">
+              MANTEQUILLA, el yapımı üretim disiplinini modern butik pastacılıkla birleştiren
+              premium bir marka olarak doğdu.
+            </p>
+            <p>
+              Her ürün günlük ve taze olarak hazırlanır; gerçek tereyağı, kaliteli çikolata ve
+              seçkin hammaddelerle üretilir. Amacımız, her siparişte aynı yüksek kaliteyi ve zarif
+              lezzet dengesini sunmaktır.
+            </p>
+          </div>
+          <div class="story-points reveal">
+            <article class="story-point">
+              <strong>Premium Malzeme Seçimi</strong>
+              <p>Gerçek tereyağı, seçkin kuruyemişler ve yüksek kaliteli çikolata kullanılır.</p>
+            </article>
+            <article class="story-point">
+              <strong>Günlük Taze Üretim</strong>
+              <p>Sınırlı adetli üretim sayesinde her gün aynı tazelik ve lezzet korunur.</p>
+            </article>
+            <article class="story-point">
+              <strong>El Yapımı Ustalık</strong>
+              <p>Her ürün elde hazırlanır ve butik kalite standardına göre son dokunuş yapılır.</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="cookies">
+        <div class="container">
+          <h2 class="section-title reveal">En Sevilen Lezzetler</h2>
+          <p class="section-subtitle reveal">
+            Günlük üretilen, el yapımı imza lezzetlerimiz.
+          </p>
+          <div class="products-grid">
+            <article class="product-card reveal">
+              <div class="product-visual" style="background-image: linear-gradient(140deg, #b07b45, #764625)"></div>
+              <div class="product-info"><h3>Antep Fıstığı Dolgulu Cookie</h3><p>Yoğun fıstık dolgusu ve zarif dokusuyla dengeli bir lezzet.</p></div>
+            </article>
+            <article class="product-card reveal">
+              <div class="product-visual" style="background-image: linear-gradient(140deg, #d2b18e, #9a6d49)"></div>
+              <div class="product-info"><h3>Karamelli Yer Fıstıklı Cookie</h3><p>Karamel notaları ve yer fıstığı kıtırlığıyla güçlü bir uyum.</p></div>
+            </article>
+            <article class="product-card reveal">
+              <div class="product-visual" style="background-image: linear-gradient(140deg, #5d4f4f, #2b2222)"></div>
+              <div class="product-info"><h3>Lotus Biscoff Dolgulu Cookie</h3><p>İnce kıtır yüzeyin altında akışkan ve yoğun bir iç dolgu.</p></div>
+            </article>
+            <article class="product-card reveal">
+              <div class="product-visual" style="background-image: linear-gradient(140deg, #d6b084, #8f6543)"></div>
+              <div class="product-info"><h3>Tiramisu Cookie</h3><p>Kahve ve krema esintisini yumuşak bir dokuda buluşturur.</p></div>
+            </article>
+            <article class="product-card reveal">
+              <div class="product-visual" style="background-image: linear-gradient(140deg, #b28a63, #6f4e32)"></div>
+              <div class="product-info"><h3>Orman Meyveli Cheesecake Cookie</h3><p>Meyvemsi dokunuşlar ve cheesecake esintisiyle ferah bir yorum.</p></div>
+            </article>
+            <article class="product-card reveal">
+              <div class="product-visual" style="background-image: linear-gradient(140deg, #ca9a7e, #925e45)"></div>
+              <div class="product-info"><h3>Yoğun Çikolatalı Brownie Cookie</h3><p>Derin kakao aroması ve brownie kıvamıyla dolgun bir tat.</p></div>
+            </article>
+            <article class="product-card reveal">
+              <div class="product-visual" style="background-image: linear-gradient(140deg, #8f503f, #4b261d)"></div>
+              <div class="product-info"><h3>Limon Kremalı Beyaz Çikolatalı Cookie</h3><p>Limon kreması ve beyaz çikolatanın zarif dengesi.</p></div>
+            </article>
+            <article class="product-card reveal">
+              <div class="product-visual" style="background-image: linear-gradient(140deg, #876c4b, #5a432f)"></div>
+              <div class="product-info"><h3>Nutella Dolgulu Cookie</h3><p>İnce kabuğun içinde akışkan Nutella dolgulu imza tarif.</p></div>
+            </article>
+            <article class="product-card reveal">
+              <div class="product-visual" style="background-image: linear-gradient(140deg, #a48f79, #705f4d)"></div>
+              <div class="product-info"><h3>Chocolate Chip Çubukları</h3><p>Bol çikolata parçalı, kıtır dokulu zarif atıştırmalıklar.</p></div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="collection">
+        <div class="container">
+          <h2 class="section-title reveal">Pastalar, Tatlılar ve Tuzlular</h2>
+          <p class="section-subtitle reveal">
+            Şık davetler, özel buluşmalar ve günlük keyif anları için zengin ürün seçkisi.
+          </p>
+          <div class="catalog-wrap">
+            <article class="catalog-card reveal">
+              <h3>Pastalar</h3>
+              <ul>
+                <li>Yoğun Çikolatalı Pasta</li>
+                <li>Antep Fıstıklı Özel Pasta</li>
+                <li>Vanilya ve Narenciye Katmanlı Pasta</li>
+              </ul>
+            </article>
+            <article class="catalog-card reveal">
+              <h3>Tatlılar</h3>
+              <ul>
+                <li>Karamelli Mini Tart</li>
+                <li>İmza Tiramisu Kup</li>
+                <li>Orman Meyveli Kremalı Tatlı</li>
+              </ul>
+            </article>
+            <article class="catalog-card reveal">
+              <h3>Tuzlular</h3>
+              <ul>
+                <li>Trüf Aromalı Mini Brioche</li>
+                <li>İncirli Peynirli Mini Tart</li>
+                <li>Karışık Mini Kiş Çeşitleri</li>
+              </ul>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section event" id="events">
+        <div class="container">
+          <h2 class="section-title reveal">Özel Siparişler</h2>
+          <p class="section-subtitle reveal">
+            Kutlamalarınıza özel, özenle hazırlanan tatlı ve pasta seçenekleri.
+          </p>
+          <div class="event-grid">
+            <article class="event-box reveal">
+              <h3>Doğum Günü Pastaları</h3>
+              <p>İstediğiniz tasarım, lezzet ve ölçülerde hazırlanan özel pastalar.</p>
+              <p>4-6 Kişilik • 10-12 Kişilik • 12-16 Kişilik • 18-20 Kişilik</p>
+              <p>
+                Boş pasta konseptimiz ile sevdiklerinizle kendi pastanızı süsleyebileceğiniz
+                unutulmaz bir deneyim sunuyoruz.
+              </p>
+            </article>
+            <article class="event-box reveal">
+              <h3>Organizasyonlar & Davetler</h3>
+              <p>Nişan, söz, doğum günü ve özel günleriniz için butik sunum seçenekleri.</p>
+              <p>Brownie çeşitleri • Cupcake çeşitleri • Tiramisu • Trileçe</p>
+            </article>
+            <article class="event-box reveal">
+              <h3>Kiloluk Ürünler</h3>
+              <p>Toplu siparişler ve özel davetler için hazırlanır.</p>
+              <p>Profiterol • Poğaça çeşitleri • Börek çeşitleri • Kahve yanı atıştırmalıkları</p>
+            </article>
+          </div>
+          <p class="reveal" style="margin-top: 1.4rem">
+            Sipariş planlamasında yüksek kalite ve tazelik için erken rezervasyon önerilir.
+          </p>
+        </div>
+      </section>
+
+      <section class="section" id="instagram">
+        <div class="container">
+          <h2 class="section-title reveal">Instagram Lezzet Galerisi</h2>
+          <p class="section-subtitle reveal">
+            Atölyemizde hazırlanan özel reçetelerden seçilen sunum ve lezzet kareleri.
+          </p>
+          <div class="insta-grid">
+            <div class="insta-item reveal" style="background-image: linear-gradient(135deg, #9a7a5f, #3e2d27)"></div>
+            <div class="insta-item reveal" style="background-image: linear-gradient(135deg, #d6c4af, #8e7054)"></div>
+            <div class="insta-item reveal" style="background-image: linear-gradient(135deg, #86684f, #2a1e18)"></div>
+            <div class="insta-item reveal" style="background-image: linear-gradient(135deg, #ccb59b, #6f553f)"></div>
+            <div class="insta-item reveal" style="background-image: linear-gradient(135deg, #c89f77, #5f3a27)"></div>
+            <div class="insta-item reveal" style="background-image: linear-gradient(135deg, #baa089, #4f3a2f)"></div>
+            <div class="insta-item reveal" style="background-image: linear-gradient(135deg, #a8907a, #31353f)"></div>
+            <div class="insta-item reveal" style="background-image: linear-gradient(135deg, #e4d4c0, #7d6651)"></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="contact">
+        <div class="container">
+          <h2 class="section-title reveal">İletişim</h2>
+          <p class="section-subtitle reveal">
+            Sipariş, iş birliği ve özel gün talepleriniz için bizimle hemen iletişime geçin.
+          </p>
+          <div class="contact-grid">
+            <article class="contact-card reveal">
+              <h3>Mağaza Bilgileri</h3>
+              <p>Adres: Hürriyet Mah. 1716 Sokak No:33B</p>
+              <p>Telefon: 0530 507 22 89</p>
+              <p>
+                <a href="https://wa.me/905305072289" target="_blank" rel="noopener">WhatsApp Hattı</a><br />
+                <a href="https://instagram.com/mantequillacookies" target="_blank" rel="noopener">Instagram: @mantequillacookies</a>
+              </p>
+            </article>
+            <article class="contact-card reveal">
+              <iframe
+                class="map"
+                title="MANTEQUILLA Konum"
+                loading="lazy"
+                referrerpolicy="no-referrer-when-downgrade"
+                src="https://www.google.com/maps?q=Hurriyet%20Mah.%201716%20Sokak%20No:33B&output=embed"
+              ></iframe>
+            </article>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="container footer-inner">
+        <strong style="font-family: 'Playfair Display', serif">MANTEQUILLA</strong>
+        <span>Butik üretim premium cookie ve tatlı deneyimi</span>
+        <span>© 2026 MANTEQUILLA. Tüm hakları saklıdır.</span>
+      </div>
+    </footer>
+
+    <a
+      class="wa-fab"
+      href="https://wa.me/905305072289"
+      target="_blank"
+      rel="noopener"
+      aria-label="WhatsApp ile iletişime geç"
+      >✆</a
+    >
+
+    <script>
+      const menuToggle = document.getElementById("menuToggle");
+      const navLinks = document.getElementById("navLinks");
+      const linkItems = navLinks.querySelectorAll("a");
+
+      menuToggle.addEventListener("click", () => {
+        navLinks.classList.toggle("open");
+      });
+
+      linkItems.forEach((link) => {
+        link.addEventListener("click", () => {
+          navLinks.classList.remove("open");
+        });
+      });
+
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add("is-visible");
+              observer.unobserve(entry.target);
+            }
+          });
+        },
+        { threshold: 0.14 }
+      );
+
+      document.querySelectorAll(".reveal").forEach((el) => observer.observe(el));
+    </script>
   </body>
 </html>
