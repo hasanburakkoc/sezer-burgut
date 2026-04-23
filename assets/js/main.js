@@ -42,7 +42,7 @@ const cookieData = [
   },
   {
     name: "Yoğun Çikolatalı Brownie Cookie",
-    line: "Derin kakao karakteriyle yogun ve tatmin edici bir doku deneyimi.",
+    line: "Derin kakao karakteriyle yoğun ve tatmin edici bir doku deneyimi.",
     image: "assets/images/cookies/chocolate-brownie.png",
     alt: "Yoğun Çikolatalı Brownie Cookie",
     mood: {
